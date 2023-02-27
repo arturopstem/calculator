@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
@@ -15,26 +21,36 @@
           <div class="lcd">3.14159</div>
         </div>
         <div class="keyboard">
-          <button>CLR</button>
-          <button>BK</button>
-          <button>%</button>
-          <button>&#8730;</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>/</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>X</button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>-</button>
-          <button>0</button>
-          <button>.</button>
-          <button>=</button>
-          <button>+</button>
+          <div class="row">
+            <button class="control">CLR</button>
+            <button class="control">BK</button>
+            <button class="operator">%</button>
+            <button class="operator">&#8730;</button>
+          </div>
+          <div class="row">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">/</button>
+          </div>
+          <div class="row">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">X</button>
+          </div>
+          <div class="row">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="operator">-</button>
+          </div>
+          <div class="row">
+            <button>0</button>
+            <button>.</button>
+            <button class="operator">=</button>
+            <button class="operator">+</button>
+          </div>
         </div>
       </div>
     </main>
