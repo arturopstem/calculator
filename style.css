@@ -1,0 +1,59 @@
+:root {
+  color-scheme: dark;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  font-family: "Red Hat Mono", monospace;
+  height: 100svh;
+}
+main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calculator {
+  display: flex;
+  flex-direction: column;
+  background-color: #e07a5f;
+  border-radius: 8px;
+  padding: 8px;
+  gap: 8px;
+}
+.display {
+}
+.lcd {
+  background-color: #4cc9f0;
+  color: #000;
+  font-weight: bold;
+  font-size: 2rem;
+  border-radius: 8px;
+}
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.keyboard .row {
+  display: flex;
+  gap: 4px;
+}
+.keyboard button {
+  width: 50px;
+  aspect-ratio: 1/1;
+  background-color: #4361ee;
+  font-weight: bold;
+}
+.keyboard .control {
+  background-color: #ff006e;
+}
+.keyboard .operator {
+  background-color: #006d77;
+}
