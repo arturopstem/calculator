@@ -1,5 +1,6 @@
 const LCD = document.querySelector(".lcd");
 const CLR = document.querySelector("#clear");
+const BK = document.querySelector("#backspace");
 const NUMERAL = document.querySelectorAll(".numeral");
 
 function clearAll() {
@@ -29,7 +30,16 @@ function inputToLCD(char) {
   LCD.textContent += char;
 }
 
+function backspace() {
+  let display = LCD.textContent;
+  if (display === "0") return;
+  display = display.slice(0, display.indexOf("e"));
+  if (display === "-" || display === "") display = "0";
+  LCD.textContent = display;
+}
+
 CLR.addEventListener("click", () => clearAll());
+BK.addEventListener("click", () => backspace());
 NUMERAL.forEach((button) => {
   button.addEventListener("click", () => inputToLCD(button.textContent));
 });
