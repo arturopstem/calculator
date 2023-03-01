@@ -27,14 +27,17 @@ main {
   padding: 8px;
   gap: 8px;
 }
-.display {
-}
 .lcd {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 3rem;
   background-color: #4cc9f0;
   color: #000;
   font-weight: bold;
   font-size: 2rem;
   border-radius: 8px;
+  max-width: 11ch;
 }
 .keyboard {
   display: flex;
