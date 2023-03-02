@@ -3,6 +3,18 @@ const CLR = document.querySelector("#clear");
 const BK = document.querySelector("#backspace");
 const NUMERAL = document.querySelectorAll(".numeral");
 
+const addition = (a, b) => a + b;
+const subtraction = (a, b) => a - b;
+const multiplication = (a, b) => a * b;
+const division = (a, b) => a / b;
+const squareRoot = (x) => Math.sqrt(x);
+const percent = (a, p, operator) => {
+  if (operator === "addition") return a + (a * p) / 100;
+  if (operator === "subtraction") return a - (a * p) / 100;
+  if (operator === "multiplication") return (a * p) / 100;
+  if (operator === "division") return (a * 100) / p;
+};
+
 function clearAll() {
   LCD.textContent = "0";
 }
@@ -43,6 +55,3 @@ BK.addEventListener("click", () => backspace());
 NUMERAL.forEach((button) => {
   button.addEventListener("click", () => inputToLCD(button.textContent));
 });
-
-const MINUS = document.querySelector("#subtraction");
-MINUS.addEventListener("click", () => inputToLCD("-"));
