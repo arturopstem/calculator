@@ -193,6 +193,7 @@ window.addEventListener("keydown", (e) => {
       analizeInput(document.querySelector("#clear"));
       break;
     case "backspace":
+    case "delete":
       analizeInput(document.querySelector("#backspace"));
       break;
     case "%":
@@ -214,6 +215,7 @@ window.addEventListener("keydown", (e) => {
       analizeInput(document.querySelector("#division"));
       break;
     case "enter":
+    case "=":
       analizeInput(document.querySelector("#equals"));
       break;
     case "0":
