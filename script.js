@@ -1,6 +1,5 @@
 const LCD = document.querySelector(".lcd");
 const BUTTONS = document.querySelectorAll("button");
-const NOCLEARBUTTONS = document.querySelectorAll("button :not(#clear)");
 const CLEAR = document.querySelector("#clear");
 const calc = {
   stream: [],
