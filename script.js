@@ -69,6 +69,11 @@ function backspace() {
 }
 
 function analizeInput(button) {
+  if (!button.classList.contains("pressed")) {
+    button.classList.add("pressed");
+  } else {
+    button.classList.remove("pressed");
+  }
   if (button.classList.contains("operator")) {
     switch (button.id) {
       case "addition":
@@ -185,6 +190,9 @@ function displayResult(result) {
 
 BUTTONS.forEach((button) => {
   button.addEventListener("click", () => analizeInput(button));
+  button.addEventListener("transitionend", () => {
+    button.classList.remove("pressed");
+  });
 });
 
 window.addEventListener("keydown", (e) => {
