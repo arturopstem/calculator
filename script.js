@@ -27,14 +27,12 @@ function clearAll() {
   calc.afterOperator = false;
   calc.result = 0;
   calc.error = false;
-  allowOperator = false;
 }
 
 function inputToLCD(char) {
   const display = LCD.textContent;
   const maxLength = display.includes("-") ? 11 : 10;
-  if (display.length === maxLength) return;
-  allowOperator = true;
+  if (display.length === maxLength && calc.afterOperator === false) return;
   if (char === "-" && (display.includes("-") || display !== "0")) return;
   if (display === "-" && char === ".") {
     LCD.textContent = display + "0.";
@@ -159,7 +157,29 @@ function displayResult(result) {
     LCD.textContent = "ERROR";
     calc.error = true;
   } else {
-    LCD.textContent = result;
+    const sign = result < 0 ? "-" : "";
+    const absValue = result < 0 ? result * -1 : result;
+    let strValue = absValue.toString();
+    if (strValue.length > 10 && absValue < 1) {
+      const mantissa = strValue.slice(2, 6);
+      if (mantissa === "0000") {
+        strValue = absValue.toExponential(4);
+      } else {
+        strValue = strValue.slice(0, 10);
+      }
+    } else if (strValue.length > 10 && 1 <= absValue) {
+      if (strValue.slice(0, 9).includes(".")) {
+        const mantissa = Number(strValue.slice(strValue.indexOf(".") + 1, 10));
+        if (mantissa === 0) {
+          strValue = absValue.toExponential(4);
+        } else {
+          strValue = strValue.slice(0, 10);
+        }
+      } else {
+        strValue = absValue.toExponential(4);
+      }
+    }
+    LCD.textContent = sign + strValue;
   }
 }
 
