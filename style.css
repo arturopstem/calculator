@@ -38,6 +38,7 @@ main {
   font-size: 2rem;
   border-radius: 8px;
   max-width: 11ch;
+  transition: all 0.1s;
 }
 .keyboard {
   display: flex;
@@ -67,4 +68,7 @@ main {
   background-color: #fff;
   color: #000;
   scale: 0.9;
+}
+.lcd.result {
+  color: #4cc9f0;
 }

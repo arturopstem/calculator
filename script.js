@@ -158,6 +158,7 @@ function clearCalcStream(n) {
 }
 
 function displayResult(result) {
+  LCD.classList.add("result");
   if (Number.isNaN(result) || result === Infinity) {
     LCD.textContent = "ERROR";
     calc.error = true;
@@ -194,7 +195,9 @@ BUTTONS.forEach((button) => {
     button.classList.remove("pressed");
   });
 });
-
+LCD.addEventListener("transitionend", () => {
+  LCD.classList.remove("result");
+});
 window.addEventListener("keydown", (e) => {
   switch (e.key.toLowerCase()) {
     case "escape":
