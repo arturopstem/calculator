@@ -186,3 +186,68 @@ function displayResult(result) {
 BUTTONS.forEach((button) => {
   button.addEventListener("click", () => analizeInput(button));
 });
+
+window.addEventListener("keydown", (e) => {
+  switch (e.key.toLowerCase()) {
+    case "escape":
+      analizeInput(document.querySelector("#clear"));
+      break;
+    case "backspace":
+      analizeInput(document.querySelector("#backspace"));
+      break;
+    case "%":
+      analizeInput(document.querySelector("#percent"));
+      break;
+    case "r":
+      analizeInput(document.querySelector("#squareroot"));
+      break;
+    case "+":
+      analizeInput(document.querySelector("#addition"));
+      break;
+    case "-":
+      analizeInput(document.querySelector("#subtraction"));
+      break;
+    case "*":
+      analizeInput(document.querySelector("#multiplication"));
+      break;
+    case "/":
+      analizeInput(document.querySelector("#division"));
+      break;
+    case "enter":
+      analizeInput(document.querySelector("#equals"));
+      break;
+    case "0":
+      analizeInput(document.querySelector("#num0"));
+      break;
+    case "1":
+      analizeInput(document.querySelector("#num1"));
+      break;
+    case "2":
+      analizeInput(document.querySelector("#num2"));
+      break;
+    case "3":
+      analizeInput(document.querySelector("#num3"));
+      break;
+    case "4":
+      analizeInput(document.querySelector("#num4"));
+      break;
+    case "5":
+      analizeInput(document.querySelector("#num5"));
+      break;
+    case "6":
+      analizeInput(document.querySelector("#num6"));
+      break;
+    case "7":
+      analizeInput(document.querySelector("#num7"));
+      break;
+    case "8":
+      analizeInput(document.querySelector("#num8"));
+      break;
+    case "9":
+      analizeInput(document.querySelector("#num9"));
+      break;
+    case ".":
+      analizeInput(document.querySelector("#dot"));
+      break;
+  }
+});
