@@ -22,7 +22,7 @@ main {
 .calculator {
   display: flex;
   flex-direction: column;
-  background-color: #e07a5f;
+  background-color: #a29bfe;
   border-radius: 8px;
   padding: 8px;
   gap: 8px;
@@ -38,7 +38,7 @@ main {
   font-size: 2rem;
   border-radius: 8px;
   max-width: 11ch;
-  transition: all 0.1s;
+  transition: all 0.05s;
 }
 .keyboard {
   display: flex;
