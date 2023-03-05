@@ -5,7 +5,8 @@ const calc = {
   stream: [],
   result: 0,
   afterOperator: false,
-  lastButton: undefined,
+  buttons: [],
+  chained: false,
   error: false,
 };
 
@@ -24,8 +25,10 @@ const percent = (a, p, operator) => {
 function clearAll() {
   LCD.textContent = "0";
   calc.stream = [];
-  calc.afterOperator = false;
   calc.result = 0;
+  calc.afterOperator = false;
+  calc.buttons = [];
+  calc.chained = false;
   calc.error = false;
 }
 
@@ -68,23 +71,38 @@ function backspace() {
   LCD.textContent = display;
 }
 
-function analizeInput(button) {
-  if (!button.classList.contains("pressed")) {
-    button.classList.add("pressed");
-  } else {
-    button.classList.remove("pressed");
-  }
+function typeOfButton(button) {
   if (button.classList.contains("operator")) {
     switch (button.id) {
       case "addition":
       case "subtraction":
       case "multiplication":
       case "division":
-        calc.lastButton = "basicOperator";
-        break;
+      case "equals":
+        return "operator";
     }
   } else {
-    calc.lastButton = "otherButton";
+    return "other";
+  }
+}
+
+function analizeInput(button) {
+  if (!LCD.classList.contains("result")) {
+    LCD.classList.add("result");
+  } else {
+    LCD.classList.remove("result");
+  }
+  if (!button.classList.contains("pressed")) {
+    button.classList.add("pressed");
+  } else {
+    button.classList.remove("pressed");
+  }
+  calc.buttons.push(typeOfButton(button));
+  if (calc.buttons.length === 3) calc.buttons.shift();
+  if (calc.buttons[0] === "operator" && calc.buttons[1] === "operator") {
+    calc.chained = true;
+  } else {
+    calc.chained = false;
   }
   if (button.id === "clear") clearAll();
   if (calc.error) return;
@@ -105,12 +123,12 @@ function analizeInput(button) {
 }
 
 function operate(operator) {
-  calc.stream.push(Number(LCD.textContent));
-  calc.stream.push(operator);
-  if (calc.lastButton === "basicOperator" && calc.stream.length > 2) {
-    clearCalcStream(2);
+  if (calc.afterOperator && calc.chained && calc.stream.length === 2) {
+    calc.stream[1] = operator;
     return;
   }
+  calc.stream.push(Number(LCD.textContent));
+  calc.stream.push(operator);
   if (operator === "squareroot") {
     calc.result = squareRoot(Number(LCD.textContent));
     displayResult(calc.result);
@@ -158,7 +176,6 @@ function clearCalcStream(n) {
 }
 
 function displayResult(result) {
-  LCD.classList.add("result");
   if (Number.isNaN(result) || result === Infinity) {
     LCD.textContent = "ERROR";
     calc.error = true;
@@ -186,6 +203,7 @@ function displayResult(result) {
       }
     }
     LCD.textContent = sign + strValue;
+    if (calc.stream.length === 4) calc.stream[2] = result;
   }
 }
 
